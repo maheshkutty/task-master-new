@@ -1,0 +1,10 @@
+.tasklist{
+    max-height:100%;
+    overflow-y: auto;
+}
+
+.profile{
+    background-color: #E3E2DF;
+    color: #9a1750;
+    border-radius: 20px;
+}

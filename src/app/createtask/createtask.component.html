@@ -1,0 +1,76 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="d-flex" class="alert alert-danger" *ngIf="errorMsg != ''">
+        <div>
+          {{errorMsg}}
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="p-2 flex-fill">
+          <div class="mb-3">
+            <label for="t_title">Title</label>
+            <input type="text" value="" class="form-control" placeholder="Title" name="t_title" id="t_title"
+              [(ngModel)]="newTask.title" #title="ngModel" required />
+            <div *ngIf="title.invalid && (title.dirty || title.touched)">
+              <div *ngIf="title.touched && title.errors?.required">
+                Title is required.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="d2">Choose Date</label>
+              <div class="input-group">
+                <input class="form-control" placeholder="dd/mm/yyyy" name="d2" #c2="ngModel" [(ngModel)]="newTask.date"
+                  ngbDatepicker #d2="ngbDatepicker" id="d2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="time">Time</label>
+            <ngb-timepicker [(ngModel)]="newTask.time" [meridian]="meridian" name="time" id="time"></ngb-timepicker>
+          </div>
+        </div>
+        <div class="p-2 flex-fill">
+          <div class="mb-3">
+            <label for="t_desc">Description</label>
+            <textarea name="t_desc" id="t_desc" cols="30" rows="8" class="form-control"
+              [(ngModel)]="newTask.description" #description="ngModel" required></textarea>
+          </div>
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+            <div *ngIf="description.touched && description.errors?.required">
+              Description is required.
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="prio1">Priority</label>
+            <select class="form-control prio" name="prio1" id="prio1" id="exampleFormControlSelect1"
+              [(ngModel)]="newTask.priority">
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" *ngIf="editfunc == '0'" class="btn btn-outline-dark" (click)="addTask()">Save</button>
+    <button type="button" *ngIf="editfunc == '1'" class="btn btn-outline-dark"
+      (click)="updateTask(taskid)">Update</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
+<i *ngIf="editfunc == '1'" class="far fa-edit icon fa-lg icon_edit" (click)="showSingleTask()"></i>
+<button *ngIf="editfunc == '0'" class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Task</button>

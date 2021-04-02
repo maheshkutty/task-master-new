@@ -1,0 +1,31 @@
+<div class="col-md-11 mt-3 p-2 whole_task_card mb-3"  *ngFor="let task of TaskList.ABC1.tasks">
+    <div class="task_content p-2">
+        <div class="task_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-10">
+                        <h1 class="task_header">{{task.title | uppercase}}</h1>
+                        <p class="task_desc">{{task.description}}</p>
+                    </div>
+                    <div class="col justify-content-end p-0">
+                        <app-createtask [TaskList] = "TaskList" [editfunc] = "1" [taskid]="task.id"></app-createtask>
+                        <i class="fas fa-trash icon fa-lg icon_delete" (click) = "deleteTask(task.id)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="task_main">
+            <span class="task_date">{{task.date}}</span>
+            <span class="task_time">{{task.time}}</span>
+            <span *ngIf="task.priority == 'HIGH'" class="task_high">{{task.priority}}</span>
+            <span *ngIf="task.priority == 'MEDIUM'" class="task_medium">{{task.priority}}</span>
+            <span *ngIf="task.priority == 'LOW'" class="task_low">{{task.priority}}</span>
+            <div class="d-flex justify-content-end align-items-center mt-3">
+                <span class="mr-2">Pending</span>
+                <i class="fas fa-toggle-off fa-2x icon" *ngIf = "task.done == false" (click) = "changeDone(task.id)"></i>
+                <i class="fas fa-toggle-on fa-2x icon" *ngIf = "task.done == true" (click) = "changeDone(task.id)"></i>
+                <span class="ml-2">Done</span>
+            </div>
+        </div>
+    </div>
+</div>

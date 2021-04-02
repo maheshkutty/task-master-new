@@ -1,0 +1,69 @@
+.whole_task_card{
+    border: 1px;
+    border-radius: 20px;
+    background-color: #E3E2DF;
+    color: #9a1750;
+    box-shadow: 2px 5px 8px #9b0a49;
+}
+
+.odd-active{
+    background-color: #335ccf;
+}
+
+.even-active{
+    background-color: #df1c2a;
+}
+
+.task_date, .task_time{
+    border-radius: 10px;
+    background-color: #335ccf;
+    color: #E3E2DF;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.task_time{
+    background-color: #F4C430;
+    color: #9b0a49;
+}
+
+.task_high{
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.task_medium{
+    border-radius: 10px;
+    background-color: orange;
+    color: white;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.task_low{
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.icon{
+    margin: 0 0.5rem 0 0;
+}
+
+.icon:hover{
+    color: #F4C430;
+    cursor: pointer;
+}
+
+.task_desc{
+    font-size: 1.5rem;
+}
+
+.task_header{
+    font-weight: bold;
+}
